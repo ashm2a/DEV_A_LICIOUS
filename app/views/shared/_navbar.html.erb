@@ -1,0 +1,17 @@
+<div class="navbar">
+  <div class="logo">
+    <a href="/">Dev-A-Licious</a>
+  </div>
+  <div class="search">
+    <%= form_tag("", method: :get) do %>
+      <%= text_field_tag(:query, nil, placeholder: "Rechercher...") %>
+      <button type="submit"><i class="fas fa-search"></i></button>
+    <% end %>
+  </div>
+  <div class="call-to-action">
+    <%= link_to "Ajoutez un dev", new_developer_path, id: "add" %>
+    <%= link_to new_user_session_path, id: "login" do %>
+      <i class="fas fa-user"></i>
+    <% end %>
+  </div>
+</div>
