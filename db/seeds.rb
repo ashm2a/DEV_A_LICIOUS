@@ -26,6 +26,7 @@ Developer.create(
   first_name:"Thomas",
   last_name:"Guerin",
   description:"I was a sales manager for 8 years. Then I created my company in global design. I want to learn to code to develop my company and complete my commercial offer. After the wagon, I would be freelancing after a few internships or jobs.",
+  city: "Saint-Cyr-sur-Mer"
   url_picture:"https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1683874439/jrcbiehgpfipibrdwphh.jpg"
   price_per_day: 20
 )
