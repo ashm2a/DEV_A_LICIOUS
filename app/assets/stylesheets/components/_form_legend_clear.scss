@@ -48,7 +48,7 @@
         background: none;
         border-bottom: 2px solid #DEE2E6;
         color: black;
-        font-size: 20px;
+        font-size: 19px;
         transition: 0.4s ease-out;
       }
 
@@ -61,23 +61,23 @@
         label {
           top: 0px;
           transform: translateY(-100%);
-          color: #FF385C;
+          color: $rouge;
         }
 
         input, textarea {
-          border-bottom-color: #FF385C;
+          border-bottom-color: $rouge;
         }
       }
     }
 
     .custom-button {
-      color: #FF385C;
+      color: $rouge;
       font-weight: bold;
-      border: 2px solid #FF385C;
+      border: 2px solid $rouge;
       transition: all 0.4s ease-in-out;
 
       &:hover {
-        background-color: #FF385C;
+        background-color: $rouge;
         color: white;
       }
     }
