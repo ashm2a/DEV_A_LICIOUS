@@ -1,1 +1,26 @@
 <h1>Salut</h1>
+
+
+<div class="cards-grid">
+
+  <% @developers.each do |developer| %>
+    <div class="developer-card">
+    <%= image_tag(developer.image_url, alt: "developer picture") %>
+      <div class="developer-card-infos">
+        <div>
+          <h1>
+            <%= developer.first_name %>
+          </h1>
+          <p class="">
+          </p>
+        </div>
+        <h2 class="developer-card-pricing">
+        <%= developer.price_per_day %>
+        </h2>
+        <p> <%= developer.city %> </p>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

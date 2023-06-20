@@ -36,6 +36,6 @@ class DevelopersController < ApplicationController
   end
 
   def developer_params
-    params.require(:developer).permit(:first_name, :last_name, :description, :city, :url_picture, :price_per_day)
+    params.require(:developer).permit(:first_name, :last_name, :description, :city, :image_url, :price_per_day)
   end
 end
