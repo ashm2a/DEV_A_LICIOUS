@@ -2,7 +2,11 @@ class DevelopersController < ApplicationController
   before_action :set_developer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @developers = policy_scope(Developer)
+    if params[:query].present?
+      @developers = policy_scope(Developer).where("first_name LIKE :query OR last_name LIKE :query", query: "%#{params[:query]}%")
+    else
+      @developers = policy_scope(Developer)
+    end
   end
 
   def show
@@ -24,7 +28,7 @@ class DevelopersController < ApplicationController
 
   def edit
     authorize @developer
-   end
+  end
 
   def update
     authorize @developer
