@@ -1,12 +1,19 @@
 class DeveloperPolicy < ApplicationPolicy
   class Scope < Scope
-    def resolve
-      scope.all
+    attr_reader :query
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
     end
-    # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+
+    def resolve
+      if query.present?
+        scope.where("first_name LIKE :query OR last_name LIKE :query", query: "%#{query}%")
+      else
+        scope.all
+      end
+    end
   end
 
   def show?

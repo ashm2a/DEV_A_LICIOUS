@@ -13,7 +13,7 @@
   padding: 50px;
   border-radius: 10px;
 
-  h3 {
+  h3, h2 {
     padding-bottom: 50px;
   }
 
@@ -68,6 +68,10 @@
           border-bottom-color: $rouge;
         }
       }
+    }
+
+    .links {
+      color: #FF385C;
     }
 
     .custom-button {
