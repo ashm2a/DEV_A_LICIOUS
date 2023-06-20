@@ -5,22 +5,26 @@
 
   <% @developers.each do |developer| %>
     <div class="developer-card">
-    <%= image_tag(developer.image_url, alt: "developer picture") %>
+      <%= image_tag(developer.image_url, alt: "developer picture") %>
       <div class="developer-card-infos">
-        <div>
-          <h1>
+        <div class="d-flex justify-content-between align-items-center">
+          <h1 class="developer-card-name">
             <%= developer.first_name %>
           </h1>
-          <p class="">
-          </p>
+          <h2 class="developer-card-pricing">
+            <%= developer.price_per_day %>€/jour
+          </h2>
         </div>
-        <h2 class="developer-card-pricing">
-        <%= developer.price_per_day %>
-        </h2>
-        <p> <%= developer.city %> </p>
+        <div class="developer-card-city">
+          <p><i class="fa-solid fa-location-pin" style="color: #FF385C;"></i> <%= developer.city %> </p>
+        </div>
+        <div class="developer-card-more">
+          <p></p>
+          <%= link_to "Plus d'info sur #{developer.first_name}", developer_path(developer) %>
+        </div>
       </div>
     </div>
-
   <% end %>
+
 
 </div>

@@ -8,6 +8,7 @@
   height: 200px;
   width: 100%;
   object-fit: cover;
+  object-position: center;
 }
 
 .developer-card h2 {
@@ -17,7 +18,7 @@
 }
 
 .developer-card p {
-  font-size: 12px;
+  font-size: 18px;
   opacity: .7;
   margin: 0;
 }
@@ -25,8 +26,12 @@
 
 .developer-card .developer-card-infos {
   padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
   position: relative;
+}
+
+.developer-card .developer-card-more {
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
 }
