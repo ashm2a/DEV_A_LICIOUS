@@ -24,7 +24,7 @@ class DevelopersController < ApplicationController
 
   def edit
     authorize @developer
-   end
+  end
 
   def update
     authorize @developer
