@@ -1,0 +1,37 @@
+.developer-card {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.developer-card > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.developer-card h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.developer-card p {
+  font-size: 18px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.developer-card .developer-card-infos {
+  padding: 16px;
+  position: relative;
+}
+
+.developer-card .developer-card-more {
+  padding: 16px;
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+}
