@@ -5,6 +5,81 @@
 // input and has no visual effect. Here we try to fix matters by
 // applying the clear to the div wrapping the first following radio button
 // or checkbox.
-legend ~ div.form-check:first-of-type {
-  clear: left;
+
+.form-container {
+  margin: 50px auto 50px auto;
+  width: 80%;
+  box-shadow: 0 0 5px rgb(97, 97, 97);
+  padding: 50px;
+  border-radius: 10px;
+
+  h3 {
+    padding-bottom: 50px;
+  }
+
+  .formBloc {
+    .formGroupe {
+      position: relative;
+      display: flex;
+      margin-bottom: 50px;
+
+      label {
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        color: black;
+        font-size: 20px;
+        transition: 0.4s ease-out;
+      }
+
+      #area {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      input, textarea {
+        display: block;
+        width: 100%;
+        padding: 10px 0px;
+        border: none;
+        outline: none;
+        background: none;
+        border-bottom: 2px solid #DEE2E6;
+        color: black;
+        font-size: 20px;
+        transition: 0.4s ease-out;
+      }
+
+      textarea {
+        min-height: 200px;
+      }
+
+      &.animation,
+      &:focus-within {
+        label {
+          top: 0px;
+          transform: translateY(-100%);
+          color: #FF385C;
+        }
+
+        input, textarea {
+          border-bottom-color: #FF385C;
+        }
+      }
+    }
+
+    .custom-button {
+      color: #FF385C;
+      font-weight: bold;
+      border: 2px solid #FF385C;
+      transition: all 0.4s ease-in-out;
+
+      &:hover {
+        background-color: #FF385C;
+        color: white;
+      }
+    }
+  }
 }

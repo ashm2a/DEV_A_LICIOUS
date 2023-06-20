@@ -1,0 +1,39 @@
+<div class="form-container">
+  <h3><strong>Ajouter</strong>-votre dev' !</h3>
+  <%= simple_form_for @developer, method: :post, html: { class: "formBloc" } do |f| %>
+
+    <div class="formGroupe">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div class="formGroupe">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div class="formGroupe">
+      <%= f.label :description, id: 'area' %>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class="formGroupe">
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+    </div>
+
+    <div class="formGroupe">
+      <%= f.label :price_per_day %>
+      <%= f.text_field :price_per_day %>
+    </div>
+
+    <div class="form">
+      <%= f.input :photo, as: :file %>
+    </div>
+
+    <div class="form-group d-flex justify-content-between pt-4">
+      <%= link_to 'Annuler', developers_path, class: 'btn btn-danger'%>
+      <%= f.submit "Ajoutez", class: 'btn custom-button' %>
+    </div>
+  <% end %>
+</div>
