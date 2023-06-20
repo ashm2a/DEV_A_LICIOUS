@@ -20,11 +20,14 @@ class DevelopersController < ApplicationController
   end
 
   def create
-    authorize @developer
     @developer = Developer.new(developer_params)
     @developer.user = current_user
-    @developer.save
+    if @developer.save
     redirect_to developer_path(@developer)
+    else
+      render :new
+    end
+    authorize @developer
   end
 
   def edit
@@ -32,15 +35,15 @@ class DevelopersController < ApplicationController
   end
 
   def update
-    authorize @developer
     @developer.update!(developer_params)
     redirect_to developer_path(@developer)
+    authorize @developer
   end
 
   def destroy
-    authorize @developer
     @developer.destroy
     redirect_to developers_path, status: :see_other
+    authorize @developer
   end
 
   private
@@ -50,6 +53,6 @@ class DevelopersController < ApplicationController
   end
 
   def developer_params
-    params.require(:developer).permit(:first_name, :last_name, :description, :city, :image_url, :price_per_day)
+    params.require(:developer).permit(:first_name, :last_name, :description, :city, :image_url, :price_per_day, :photo)
   end
 end

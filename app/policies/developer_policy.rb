@@ -11,7 +11,7 @@ class DeveloperPolicy < ApplicationPolicy
       if query.present?
         scope.where("first_name LIKE :query OR last_name LIKE :query", query: "%#{query}%")
       else
-        scope.all
+        user.admin? ? scope.all : scope.where(user: user)
       end
     end
   end
