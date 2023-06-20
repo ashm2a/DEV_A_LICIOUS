@@ -15,5 +15,6 @@ function addAnimationToInputs() {
 }
 
 document.addEventListener('turbolinks:load', function () {
+  console.log('Page loaded with Turbolinks');
   addAnimationToInputs(); // Exécutez le code sur chaque chargement de page via Turbolinks
 });
