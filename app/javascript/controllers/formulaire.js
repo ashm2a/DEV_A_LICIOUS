@@ -1,17 +1,19 @@
-const inputs = document.querySelectorAll('input');
+import Turbolinks from 'turbolinks';
 
-for (let i = 0; i < inputs.length; i++) {
+function addAnimationToInputs() {
+  const inputs = document.querySelectorAll('input');
 
-    let field = inputs[i];
-
-    field.addEventListener('input', (e) => {
-
-        if(e.target.value != ""){
-            e.target.parentNode.classList.add('animation');
-        } else if (e.target.value == "") {
-            e.target.parentNode.classList.remove('animation');
-        }
-
-    })
-
+  inputs.forEach((e) => {
+    e.addEventListener('input', (e) => {
+      if (e.target.value != "") {
+        e.target.parentNode.classList.add('animation');
+      } else if (e.target.value == "") {
+        e.target.parentNode.classList.remove('animation');
+      }
+    });
+  });
 }
+
+document.addEventListener('turbolinks:load', function () {
+  addAnimationToInputs(); // Exécutez le code sur chaque chargement de page via Turbolinks
+});
