@@ -3,7 +3,9 @@
 
   <% @developers.each do |developer| %>
     <div class="developer-card">
-      <%= image_tag(developer.image_url, alt: "developer picture") %>
+      <% if developer.photo.attached? %>
+      <%= cl_image_tag developer.photo.key, alt: "developer picture" %>
+      <% end %>
       <div class="developer-card-infos">
         <div class="d-flex justify-content-between align-items-center">
           <h1 class="developer-card-name">
@@ -18,7 +20,7 @@
         </div>
         <div class="developer-card-more">
           <p></p>
-          <%= link_to "Plus d'info sur #{developer.first_name}", developer_path(developer) %>
+          <%= link_to "Plus d'info sur #{developer.photo.key}", developer_path(developer) %>
         </div>
       </div>
     </div>
