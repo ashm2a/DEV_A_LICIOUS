@@ -10,7 +10,7 @@ puts "Cleaning database..."
 Developer.destroy_all
 User.destroy_all
 puts "Creating users..."
-User.create!(email: "toto@gmail.com", password: "123456", admin: true)
+User.create!(email: "toto@gmail.com", first_name: 'toto', last_name: 'titi', password: "123456", admin: true)
 puts "Creating developers..."
 Developer.create!(
   first_name:"Angie",
