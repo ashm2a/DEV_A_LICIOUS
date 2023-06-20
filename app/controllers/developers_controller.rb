@@ -6,7 +6,7 @@ class DevelopersController < ApplicationController
   end
 
   def show
-    authorize @developper
+    authorize @developer
   end
 
   def new
