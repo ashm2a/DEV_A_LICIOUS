@@ -1,37 +1,56 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
 
-puts "Cleaning database..."
-Developer.destroy_all
-User.destroy_all
-puts "Creating users..."
-User.create!(email: "toto@gmail.com", first_name: 'toto', last_name: 'titi', password: "123456", admin: true)
-puts "Creating developers..."
-Developer.create!(
-  first_name:"Angie",
-  last_name:"Duhard",
-  description:"After years working in restaurants and and then as an administrative assistant, I am undergoing retraining and I want to become a fullstack developer.
-  I've had a first experience with front-end development when I took classes online with an american university, and I'm looking forward to strenghtening the skills I learned and to learn more about the back-end side.",
-  city:"Marseille",
-  image_url:"https://source.unsplash.com/random/?developer/",
-  price_per_day: 800,
-  user: User.last
-)
+require 'nokogiri'
+require 'open-uri'
 
-Developer.create!(
-  first_name:"Thomas",
-  last_name:"Guerin",
-  description:"I was a sales manager for 8 years. Then I created my company in global design. I want to learn to code to develop my company and complete my commercial offer. After the wagon, I would be freelancing after a few internships or jobs.",
-  city: "Saint-Cyr-sur-Mer",
-  image_url:"https://source.unsplash.com/random/?developer/",
-  price_per_day: 20,
-  user: User.last
-)
+cities = [
+  "Paris",
+  "Marseille",
+  "Lyon",
+  "Toulouse",
+  "Nice",
+  "Nantes",
+  "Strasbourg",
+  "Montpellier",
+  "Bordeaux",
+  "Lille",
+  "Rennes",
+  "Reims",
+  "Le Havre",
+  "Cergy-Pontoise",
+  "Saint-Étienne",
+  "Toulon",
+  "Angers",
+  "Grenoble",
+  "Dijon",
+  "Nîmes",
+  "Aix-en-Provence",
+  "Saint-Quentin-en-Yvelines",
+  "Brest",
+  "Le Mans",
+  "Amiens"
+]
 
 
-puts 'Finished!'
+file_path = 'tmp/classmates.html'
+html_file = File.read(file_path)
+
+html_doc = Nokogiri::HTML.parse(html_file)
+
+student_divs = html_doc.css('[data-id]')
+
+
+student_divs.each do |student_div|
+  full_name = student_div.search(".mb-3").text.strip
+  Developer.create!(
+    first_name: full_name.split[0],
+    last_name: full_name.split[1],
+    description:student_div.search(".student-bio-wrapper").text
+    city:cities.sample,
+    image_url: student_div.search("img").attribute("src").value
+    price_per_day: rand(20..80) * 10,
+    user: User.last
+  )
+end
