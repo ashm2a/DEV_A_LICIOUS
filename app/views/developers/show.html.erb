@@ -13,7 +13,7 @@
           <p><%= @developer.first_name %> <%= @developer.last_name %></p>
       </div>
       <div class="booking-form">
-      
+
       </div>
       <div class="d-flex gap-5">
         <% if policy(@developer).edit? %>
@@ -25,7 +25,7 @@
   </div>
 
   <div class="show-container-bottom">
-    <p>Ce développeur est proposé par <span class="proprio"> <%= @developer.user.first_name %> <%= @developer.user.last_name %></span> </p>
+    <p>Développeur est proposé par <span class="proprio"> <%= @developer.user.first_name %> <%= @developer.user.last_name %></span> </p>
 
       <div class="description">
         <h2>Description</h2>
