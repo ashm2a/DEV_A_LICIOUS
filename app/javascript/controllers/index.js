@@ -7,5 +7,8 @@ import { application } from "./application"
 import Formulaire from "./formulaire"
 application.register("map", Formulaire)
 
+import Profile from "./profile"
+application.register("map", Profile)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
