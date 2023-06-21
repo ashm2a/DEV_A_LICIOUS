@@ -34,7 +34,7 @@ cities = [
 ]
 
 
-file_path = 'tmp/classmates.html'
+file_path = 'app/assets/classmates.html'
 html_file = File.read(file_path)
 
 html_doc = Nokogiri::HTML.parse(html_file)
