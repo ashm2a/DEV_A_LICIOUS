@@ -16,22 +16,18 @@
         <div class="developer-rate">
           Tarif: <span><%= @developer.price_per_day %>€/jour</span>
         </div>
-        <div class="form">
-
-        </div>
-        <div class="total">
-        </div>
       </div>
-
-      <% if policy(@developer).edit? %>
-      <%= link_to "Edit this developer", edit_developer_path(@developer) %>
-      <% end %>
-      <%= button_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
+      <div class="d-flex gap-5">
+        <% if policy(@developer).edit? %>
+        <%= link_to "Edit this developer", edit_developer_path(@developer) %>
+        <% end %>
+        <%= button_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
+      </div>
     </div>
   </div>
 
   <div class="show-container-bottom">
-    <p>Ce développeur est proposé par <span class="proprio"> <%= @developer.user.first_name %> <%= @developer.user.last_name %></span> </p>
+    <p>Développeur est proposé par <span class="proprio"> <%= @developer.user.first_name %> <%= @developer.user.last_name %></span> </p>
 
       <div class="description">
         <h2>Description</h2>
@@ -42,5 +38,19 @@
         <p> blablabla </p>
       </div>
   </div>
+  
+  <div class="show-informations-container d-flex justify-content-between">
+    <div class="review-container">
+      <h3>Les avis utilisateurs :</h3>
+    </div>
 
+    <div class="map-container">
+      <h3>Où suis-je ? :</h3>
+      <div style="width: 700px; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
 </div>
