@@ -13,9 +13,14 @@
           <p><%= @developer.first_name %> <%= @developer.last_name %></p>
       </div>
       <div class="booking-form">
-        <p class="developer-rate">
+        <div class="developer-rate">
           Tarif: <span><%= @developer.price_per_day %>€/jour</span>
-        </p>
+        </div>
+        <div class="form">
+
+        </div>
+        <div class="total">
+        </div>
       </div>
 
       <% if policy(@developer).edit? %>
