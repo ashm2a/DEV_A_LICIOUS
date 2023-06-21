@@ -1,42 +1,36 @@
 .developer-card {
   overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  border-radius: 8px;
-}
 
-.developer-card > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-  object-position: center;
-}
+  i {
+    color: $rouge;
+  }
 
-.developer-card h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
+  img {
+    width: 100%;
+    border-radius: 30px;
+    min-height: 300px;
+    object-fit: cover;
+    object-position: center;
+  }
 
-.developer-card p {
-  font-size: 18px;
-  opacity: .7;
-  margin: 0;
-}
+  .developer-card-infos {
+    padding: 16px;
+    position: relative;
 
+    h1 {
+      font-size: 25px;
+    }
 
-.developer-card .developer-card-infos {
-  padding: 16px;
-  position: relative;
-}
+    h2 {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0;
+    }
 
-.developer-card .developer-card-more {
-  padding: 16px;
-  position: relative;
-  text-align: center;
-  font-size: 16px;
-}
-
-.developer-card i {
-  color: $rouge;
+    .developer-card-city {
+      font-size: 14px;
+      color: grey;
+      margin: 0;
+    }
+  }
 }
