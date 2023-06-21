@@ -9,17 +9,14 @@ class DevelopersController < ApplicationController
     else
       @developers = policy_scope(Developer)
     end
-    @markers = Developer.geocoded.map do |developer|
-      {
-        lng: developer.longitude,
-        lat: developer.latitude
-      }
-    end
   end
 
   def show
     authorize @developer
-    @markers = { lng: @developer.longitude, lat: @developer.latitude }
+    @markers = [{
+      lng: @developer.longitude,
+      lat: @developer.latitude
+    }]
   end
 
   def new

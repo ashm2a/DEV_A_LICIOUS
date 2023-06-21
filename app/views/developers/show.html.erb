@@ -13,11 +13,14 @@
           <p><%= @developer.first_name %> <%= @developer.last_name %></p>
       </div>
       <div class="booking-form">
+      
       </div>
+      <div class="d-flex gap-5">
         <% if policy(@developer).edit? %>
         <%= link_to "Edit this developer", edit_developer_path(@developer) %>
         <% end %>
         <%= button_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
+      </div>
     </div>
   </div>
 
@@ -32,6 +35,21 @@
         <h2>Bonus</h2>
         <p> blablabla </p>
       </div>
+  </div>
+
+  <div class="show-informations-container d-flex justify-content-between">
+    <div class="review-container">
+      <h3>Les avis utilisateurs :</h3>
     </div>
+
+    <div class="map-container">
+      <h3>Où suis-je ? :</h3>
+      <div style="width: 700px; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+  </div>
 
 </div>
