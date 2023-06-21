@@ -13,11 +13,20 @@
           <p><%= @developer.first_name %> <%= @developer.last_name %></p>
       </div>
       <div class="booking-form">
+        <div class="developer-rate">
+          Tarif: <span><%= @developer.price_per_day %>€/jour</span>
+        </div>
+        <div class="form">
+
+        </div>
+        <div class="total">
+        </div>
       </div>
-        <% if policy(@developer).edit? %>
-        <%= link_to "Edit this developer", edit_developer_path(@developer) %>
-        <% end %>
-        <%= button_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
+
+      <% if policy(@developer).edit? %>
+      <%= link_to "Edit this developer", edit_developer_path(@developer) %>
+      <% end %>
+      <%= button_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
     </div>
   </div>
 
@@ -32,6 +41,6 @@
         <h2>Bonus</h2>
         <p> blablabla </p>
       </div>
-    </div>
+  </div>
 
 </div>
