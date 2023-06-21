@@ -18,6 +18,7 @@ class DevelopersController < ApplicationController
 
   def show
     authorize @developer
+    @markers = { lng: @developer.longitude, lat: @developer.latitude }
   end
 
   def new
