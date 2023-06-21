@@ -3,7 +3,7 @@ function addAnimationToInputs() {
   const textareas = document.querySelectorAll('textarea');
 
   inputs.forEach((e) => {
-    e.addEventListener('click', (e) => {
+    e.addEventListener('input', (e) => {
       if (e.target.value != "") {
         e.target.parentNode.classList.add('animation');
       } else if (e.target.value == "") {
