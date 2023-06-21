@@ -2,7 +2,7 @@
 
   <div class="show-container-top">
     <div class="developer-pictures">
-      <%= image_tag(@developer.image_url, alt: "developer picture", class: "image-style") %>
+      <%= cl_image_tag @developer.photo.key, alt: "developer picture" %>
     </div>
     <div class="booking">
       <div class="developer-name">
