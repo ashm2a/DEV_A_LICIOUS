@@ -3,8 +3,9 @@ class DevelopersController < ApplicationController
   before_action :set_developer, only: [:show, :edit, :update, :destroy]
 
   def index
-    if params[:query].present?
-      @developers = policy_scope(Developer).where("first_name LIKE :query OR last_name LIKE :query", query: "%#{params[:query]}%")
+    @query = params[:query]
+    if @query.present?
+      @developers = policy_scope(Developer).where("first_name LIKE :query OR last_name LIKE :query", query: "%#{@query}%")
     else
       @developers = policy_scope(Developer)
     end
