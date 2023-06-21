@@ -3,7 +3,9 @@
 
   <% @developers.each do |developer| %>
     <div class="developer-card">
-      <% if developer.photo.attached? %>
+      <% if !developer.image_url.nil? %>
+        <%= image_tag(developer.image_url, alt: "developer picture", class: "image-style") %>
+      <% else developer.photo.attached? %>
         <%= cl_image_tag developer.photo.key, alt: "developer picture" %>
       <% end %>
       <div class="developer-card-infos">

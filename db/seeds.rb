@@ -49,7 +49,6 @@ puts "Creating developers..."
 
 student_divs.each do |student_div|
   full_name = student_div.search(".mb-3").text.strip
-  Cloudinary::Uploader.upload(student_div.search("img").attribute("src").value)
   Developer.create!(
     first_name: full_name.split[0],
     last_name: full_name.split[1],
@@ -60,5 +59,11 @@ student_divs.each do |student_div|
     user: User.last
   )
 end
+
+
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+article = Article.new(title: "NES", body: "A great console")
+article.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+article.save
 
 puts 'Finished!'
