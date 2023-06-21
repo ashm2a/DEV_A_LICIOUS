@@ -13,6 +13,7 @@ class DevelopersController < ApplicationController
         lng: developer.longitude,
         lat: developer.latitude
       }
+    end
   end
 
   def show
