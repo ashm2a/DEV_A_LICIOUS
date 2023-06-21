@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import Formulaire from "./formulaire"
-application.register("hello", Formulaire)
+import MapController from "./map_controller"
+application.register("map", MapController)

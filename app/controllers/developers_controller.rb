@@ -8,6 +8,11 @@ class DevelopersController < ApplicationController
     else
       @developers = policy_scope(Developer)
     end
+    @markers = Developer.geocoded.map do |developer|
+      {
+        lng: developer.longitude,
+        lat: developer.latitude
+      }
   end
 
   def show
