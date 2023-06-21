@@ -24,7 +24,7 @@
       width: 45%;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: space-evenly;
 
       .developer-name{
         font-size: 40px;
@@ -36,6 +36,17 @@
         border-radius: 4px;
         height: 50%;
         width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 16px;
+
+        span{
+          color: $rouge;
+        }
+        .developer-rate{
+          font-weight:bold;
+        }
       }
     }
   }
