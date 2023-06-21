@@ -49,6 +49,7 @@ puts "Creating developers..."
 
 student_divs.each do |student_div|
   full_name = student_div.search(".mb-3").text.strip
+  Cloudinary::Uploader.upload(student_div.search("img").attribute("src").value)
   Developer.create!(
     first_name: full_name.split[0],
     last_name: full_name.split[1],
