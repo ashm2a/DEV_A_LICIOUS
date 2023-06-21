@@ -18,7 +18,7 @@
   </div>
 
   <div class="show-container-bottom">
-    <p>Ce développeur est proposé par <span class="proprio"> <%= @developer.user%></span> </p>
+    <p>Ce développeur est proposé par <span class="proprio"> <%= @developer.user.first_name %> <%= @developer.user.last_name %></span> </p>
 
     <div class="description">
       <h2>Description</h2>
