@@ -4,5 +4,5 @@ class Developer < ApplicationRecord
   validates :first_name, :last_name, :description, :city, :price_per_day, presence: true
   validates :first_name, length: { minimum: 2 }
   validates :last_name, length: { minimum: 1 }
-  validates :description, length: { minimum: 150, maximum: 1000 }
+  validates :description, length: { minimum: 100, maximum: 1000 }
 end

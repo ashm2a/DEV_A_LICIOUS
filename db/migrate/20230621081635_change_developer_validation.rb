@@ -1,5 +1,5 @@
-class ChangeDeveloperValidation < ActiveRecord::Migration[7.0]
+class ChangeColumnTypeInTable < ActiveRecord::Migration[6.1]
   def change
-    change_column :developers, :description, :text, limit: 100
+    change_column :developers, :description, :text
   end
 end
