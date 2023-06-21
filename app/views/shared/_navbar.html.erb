@@ -14,11 +14,24 @@
     <%= link_to "Ajoutez un dev", new_developer_path, id: "add" %>
 
     <% if current_user %>
-      Salut <%= current_user.last_name %> !
+      <div class="profile">
+        <div style="width: 30px">
+          <i class="fas fa-user" id="login"></i>
+        </div>
+        <div class="profile-menu">
+          <a href="#">Mon profil</a>
+          <%# <%= link_to "Mon profil", new_user_session_path %>
+        </div>
+      </div>
     <% else %>
-      <%= link_to new_user_session_path, id: "login" do %>
-        <i class="fas fa-user"></i>
-      <% end %>
+      <div class="profile">
+        <i class="fas fa-user" id="login"></i>
+        <div class="profile-menu">
+          <%= link_to "Login", new_user_session_path %>
+          <div class="separator"></div>
+          <%= link_to "S'inscrire", new_user_registration_path %>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>

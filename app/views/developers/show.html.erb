@@ -39,7 +39,7 @@
     </div>
   </div>
 
-  <div class="show-container-bottom mt-4">
+  <div class="show-container-bottom mt-4 border-bottom border-top pt-3 pb-3">
       <div class="description">
         <h2>Description :</h2>
         <p> <%= @developer.description %> </p>
@@ -48,11 +48,11 @@
 
   <div class="show-container-informations mt-4 d-flex justify-content-between">
     <div class="review-container mb-4">
-      <h2>Les avis utilisateurs :</h2>
+      <h2>Ils parlent de moi !</h2>
     </div>
 
     <div class="map-container mb-4">
-      <h2>Où suis-je ? :</h2>
+      <h2>Ma localisation</h2>
       <div style="width: 100%; height: 100%;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
