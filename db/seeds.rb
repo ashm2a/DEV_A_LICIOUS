@@ -33,15 +33,12 @@ cities = [
   "Amiens"
 ]
 
-
 file_path = 'app/assets/classmates.html'
 html_file = File.read(file_path)
 
 html_doc = Nokogiri::HTML.parse(html_file)
 
 student_divs = html_doc.css('[data-id]')
-
-
 
 puts "Cleaning database..."
 Developer.destroy_all
