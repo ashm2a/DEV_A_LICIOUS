@@ -1,6 +1,6 @@
 <div class="form-container">
-  <h3><strong>Ajouter</strong>-votre dev' !</h3>
-  <%= simple_form_for @developer, method: :post, html: { class: "formBloc" } do |f| %>
+  <h3><strong>Ajouter</strong>-votre dev' !</h3><br>
+  <%= simple_form_for @developer, html: { class: "formBloc" } do |f| %>
 
     <div class="formGroupe">
       <%= f.label :first_name %>

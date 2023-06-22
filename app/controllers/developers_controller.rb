@@ -41,9 +41,12 @@ class DevelopersController < ApplicationController
   end
 
   def update
-    @developer.update!(developer_params)
-    redirect_to developer_path(@developer)
     authorize @developer
+    if @developer.update!(developer_params)
+      redirect_to developer_path(@developer)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
