@@ -1,4 +1,5 @@
 class BookingsController < ApplicationController
+  before_action :set_booking, only: [:accept, :refuse]
   before_action :set_developer, only: [:new, :create]
 
   def new
@@ -17,12 +18,31 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  def update
-    raise
-    @booking.status = 2
+  def accept
+    @booking.status = "accepté"
+    if @booking.save
+      redirect_to user_profile_path(current_user)
+    else
+      render :new
+    end
+    authorize @booking
+  end
+
+  def refuse
+    @booking.status = "refusé"
+    if @booking.save
+      redirect_to user_profile_path(current_user)
+    else
+      render :new
+    end
+    authorize @booking
   end
 
   private
+
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
 
   def set_developer
     @developer = Developer.find(params[:developer_id])
