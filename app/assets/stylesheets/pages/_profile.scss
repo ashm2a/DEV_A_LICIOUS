@@ -1,12 +1,17 @@
-.developer-container{
+.my-bookings-container{
+  width: 60%;
 
+}
+
+.my-developers-container{
+  width: 30%;
 
 }
 
 
-.developer-card {
+.my-developers-card {
   overflow: hidden;
-  height: 120px;
+  height: 80px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
@@ -15,7 +20,7 @@
 
   img {
     height: 100%;
-    width: 20%;
+    width: 30%;
     object-fit: cover;
   }
 
@@ -33,7 +38,7 @@
     margin-top: 8px;
   }
 
-  .developer-card-infos {
+  .my-developers-card-infos {
     padding: 16px;
   }
 }

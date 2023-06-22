@@ -1,34 +1,32 @@
-<h1>Mon profil</h1>
-<%= @user.first_name %>
-
-<%# if booking date current
-show alert %>
 
 
-<h1>Mes developpeurs</h1>
 
-<div class="container d-flex">
+  <h1>Mon profil</h1>
+  <%= @user.first_name %>
 
-  <div class="developer-container">
-  <% @user.developers.each do |dev| %>
-    <div class="developer-card">
-
-      <% if dev.image_url %>
-        <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
-      <% else dev.photo.attached? %>
-        <%= cl_image_tag(dev.photo.key, alt: "developer picture", crop: :thumb, gravity: :face) %>
-      <% end %>
-
-      <div class="developer-card-infos">
-        <h2><%= dev.first_name %> <%= dev.last_name %></h2>
-        <p><%=dev.description%></p>
-      </div>
-
+  <%# if booking date current
+  show alert %>
+  <div class="container d-flex">
+    <div class="my-bookings-container">
+      <h1>Mes bookings</h1>
     </div>
-  <% end %>
-  </div>
-</div>
 
+    <div class="my-developers-container">
+      <h1>Mes developpeurs</h1>
+      <% @user.developers.each do |dev| %>
+      <div class="my-developers-card">
+        <% if dev.image_url %>
+          <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
+        <% else dev.photo.attached? %>
+          <%= cl_image_tag(dev.photo.key, alt: "developer picture", crop: :thumb, gravity: :face) %>
+        <% end %>
+        <div class="my-developers-card-infos">
+          <h2><%= dev.first_name %> <%= dev.last_name %></h2>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
 <%#
 <h1>Mes bookings</h1>
 <% @user.bookings %>
