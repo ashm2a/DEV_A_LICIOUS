@@ -1,12 +1,39 @@
 .profile-container{
   width: 90vw;
   margin: 8px auto;
-}
 
-.my-bookings-container{
-  width: 60%;
+  .my-bookings-container{
+    width: 60%;
+    .my-bookings-card{
+      overflow: hidden;
+      height: 80px;
+      background: white;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      margin: 16px auto;
+      position: relative;
 
-}
+      .my-bookings-infos {
+        padding: 16px;
+      }
+      .my-bookings-status{
+        position: absolute;
+        height: 100%;
+        width: 20%;
+        padding: 8px;
+        right: 0px;
+        font-weight: bold;
+        color:white;
+        display: flex;
+        justify-content: center;
+        align-items:center;
+      }
+    }
+  }
+
+
+
 
 .my-developers-container{
   width: 25%;
@@ -69,4 +96,7 @@
       }
     }
   }
+}
+
+
 }
