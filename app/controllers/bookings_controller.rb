@@ -17,6 +17,11 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def update
+    raise
+    @booking.status = 2
+  end
+
   private
 
   def set_developer
