@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_21_111652) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_104718) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,8 +49,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_111652) do
     t.bigint "developer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "en attente", null: false
     t.index ["developer_id"], name: "index_bookings_on_developer_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.check_constraint "status::text = ANY (ARRAY['accepté'::character varying, 'en attente'::character varying, 'refusé'::character varying]::text[])"
   end
 
   create_table "developers", force: :cascade do |t|
@@ -58,11 +60,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_21_111652) do
     t.string "last_name"
     t.text "description"
     t.string "city"
+    t.string "image_url"
     t.integer "price_per_day"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_url"
+    t.string "img_key"
     t.float "latitude"
     t.float "longitude"
     t.index ["user_id"], name: "index_developers_on_user_id"
