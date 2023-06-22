@@ -19,8 +19,7 @@
           <i class="fas fa-user" id="login"></i>
         </div>
         <div class="profile-menu">
-          <a href="#">Mon profil</a>
-          <%# <%= link_to "Mon profil", new_user_session_path %>
+          <%= link_to 'Mon profil', user_profile_path(current_user) %>
         </div>
       </div>
     <% else %>
