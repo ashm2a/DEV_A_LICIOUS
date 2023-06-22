@@ -1,6 +1,8 @@
 .profile-container{
   width: 90vw;
   margin: 8px auto;
+  display: flex;
+  justify-content: space-around;
 
   .my-bookings-container{
     width: 60%;
