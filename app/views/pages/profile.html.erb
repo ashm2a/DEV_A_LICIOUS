@@ -34,32 +34,10 @@
         <% end %>
     </div>
 
-    <div class="my-developers-container">
-      <h1>Mes développeurs</h1>
-      <% @user.developers.each do |dev| %>
-      <div class="my-developers-card">
-        <% if dev.image_url %>
-          <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
-        <% else dev.photo.attached? %>
-          <%= cl_image_tag(dev.photo.key, alt: "developer picture")%>
-        <% end %>
-        <div class="my-developers-card-infos">
-          <h2><%= dev.first_name %> <%= dev.last_name %></h2>
-        </div>
-        <div class="icons">
-          <%= link_to developer_path(dev.id), data: { turbo_method: :delete } do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to edit_developer_path(dev.id) do %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-    </div>
+
 
     <div class="my-developers-container">
-    <h1>Notifications</h1>
+      <h1>Notifications</h1>
       <% if @user.bookings.where(status: "en attente").empty? %>
         <p>Aucune Notifications en cours..</p>
       <% else %>
@@ -83,3 +61,26 @@
       <% end %>
     </div>
  </div>
+<div class="my-developers-container">
+      <h1>Mes développeurs</h1>
+      <% @user.developers.each do |dev| %>
+      <div class="my-developers-card">
+        <% if dev.image_url %>
+          <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
+        <% else dev.photo.attached? %>
+          <%= cl_image_tag(dev.photo.key, alt: "developer picture")%>
+        <% end %>
+        <div class="my-developers-card-infos">
+          <h2><%= dev.first_name %> <%= dev.last_name %></h2>
+        </div>
+        <div class="icons">
+          <%= link_to developer_path(dev.id), data: { turbo_method: :delete } do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <%= link_to edit_developer_path(dev.id) do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+</div>
