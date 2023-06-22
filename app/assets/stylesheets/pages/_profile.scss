@@ -16,6 +16,12 @@
       margin: 16px auto;
       position: relative;
 
+      img{
+        height: 100%;
+        width: 28%;
+        object-fit: cover;
+      }
+
       .my-bookings-card-infos {
         margin-left: 16px;
         line-height: 14px;

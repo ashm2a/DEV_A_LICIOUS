@@ -41,7 +41,7 @@
         <% if dev.image_url %>
           <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
         <% else dev.photo.attached? %>
-          <%= cl_image_tag(dev.photo.key, alt: "developer picture") %>
+          <%= cl_image_tag(dev.photo.key, alt: "developer picture")%>
         <% end %>
         <div class="my-developers-card-infos">
           <h2><%= dev.first_name %> <%= dev.last_name %></h2>
