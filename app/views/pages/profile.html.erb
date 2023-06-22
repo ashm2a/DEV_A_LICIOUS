@@ -2,19 +2,24 @@
   <%= @user.first_name %>
 
  <div class="profile-container d-flex">
+
     <div class="my-bookings-container">
       <h1>Mes réservations</h1>
         <% @user.bookings.each do |booking| %>
           <div class="my-bookings-card">
-            <% if booking.developer.image_url %>
-              <%= image_tag(booking.developer.image_url, alt: "developer picture", class: "image-style") %>
-            <% else booking.developer.photo.attached? %>
-              <%= cl_image_tag(booking.developer.photo.key, alt: "developer picture") %>
-            <% end %>
-            <div class="my-bookings-card-infos">
-              <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
-              <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
-              <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
+            <div class="info-booking">
+              <div class="picture">
+                <% if booking.developer.image_url %>
+                  <%= image_tag(booking.developer.image_url, alt: "developer picture", class: "image-style") %>
+                <% else booking.developer.photo.attached? %>
+                  <%= cl_image_tag(booking.developer.photo.key, alt: "developer picture") %>
+                <% end %>
+              </div>
+              <div class="my-bookings-card-infos">
+                <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
+                <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
+                <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
+              </div>
             </div>
 
             <% if booking.status == "en attente" %>
@@ -34,32 +39,8 @@
         <% end %>
     </div>
 
-    <div class="my-developers-container">
-      <h1>Mes développeurs</h1>
-      <% @user.developers.each do |dev| %>
-      <div class="my-developers-card">
-        <% if dev.image_url %>
-          <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
-        <% else dev.photo.attached? %>
-          <%= cl_image_tag(dev.photo.key, alt: "developer picture")%>
-        <% end %>
-        <div class="my-developers-card-infos">
-          <h2><%= dev.first_name %> <%= dev.last_name %></h2>
-        </div>
-        <div class="icons">
-          <%= link_to developer_path(dev.id), data: { turbo_method: :delete } do %>
-            <i class="fa-solid fa-trash"></i>
-          <% end %>
-          <%= link_to edit_developer_path(dev.id) do %>
-            <i class="fa-solid fa-pen-to-square"></i>
-          <% end %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-
-    <div class="my-developers-container">
-    <h1>Notifications</h1>
+    <div class="my-notifications-container">
+      <h1>Notifications</h1>
       <% if @user.bookings.where(status: "en attente").empty? %>
         <p>Aucune Notifications en cours..</p>
       <% else %>
@@ -68,13 +49,15 @@
             <% if booking.status == "en attente" %>
               <div class="my-developers-card">
                 <div class="my-developers-card-infos">
-                  <h2><%= dev.first_name %> <%= dev.last_name %></h2>
-                  <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
-                  <p> <%= ((booking.date_end - booking.date_begin) * dev.price_per_day).to_i  %> €</p>
+                  <p>
+                    <span><%=booking.user.first_name%> <%=booking.user.last_name%></span> a fait une demande de réservation pour:
+                    <span><%= dev.first_name %> <%= dev.last_name %></span></p>
+                    <p>du <%= booking.date_begin %> au <%= booking.date_end%></p>
+                    <p> <%= ((booking.date_end - booking.date_begin) * dev.price_per_day).to_i  %> €</p>
                 </div>
                 <div class="icons">
-                  <%= button_to 'Accepter', accept_booking_path(booking.id), method: :patch %>
-                  <%= button_to 'Refuser', refuse_booking_path(booking.id), method: :patch %>
+                  <%= button_to 'Accepter', accept_booking_path(booking.id), method: :patch, class: 'btn btn-accept' %>
+                  <%= button_to 'Refuser', refuse_booking_path(booking.id), method: :patch, class: 'btn btn-refuse' %>
                 </div>
               </div>
             <% end %>
@@ -82,4 +65,29 @@
         <% end %>
       <% end %>
     </div>
+
  </div>
+
+  <div class="my-developers-container">
+    <h1>Mes développeurs</h1>
+    <% @user.developers.each do |dev| %>
+    <div class="my-developers-card">
+      <% if dev.image_url %>
+        <%= image_tag(dev.image_url, alt: "developer picture", class: "image-style") %>
+      <% else dev.photo.attached? %>
+        <%= cl_image_tag(dev.photo.key, alt: "developer picture")%>
+      <% end %>
+      <div class="my-developers-card-infos">
+        <h2><%= dev.first_name %> <%= dev.last_name %></h2>
+      </div>
+      <div class="icons">
+        <%= link_to developer_path(dev.id), data: { turbo_method: :delete } do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+        <%= link_to edit_developer_path(dev.id) do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div>
