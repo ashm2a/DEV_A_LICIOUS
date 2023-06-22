@@ -1,7 +1,7 @@
   <h1>Mon profil</h1>
   <%= @user.first_name %>
 
-  <div class="profile-container d-flex">
+ <div class="profile-container d-flex">
     <div class="my-bookings-container">
       <h1>Mes réservations</h1>
         <% @user.bookings.each do |booking| %>
@@ -14,7 +14,7 @@
             <div class="my-bookings-card-infos">
               <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
               <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
-              <p> <%= ((booking.date_end - booking.date_begin) * booking.developer.price_per_day).to_i  %> €</p>
+              <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
             </div>
 
             <% if booking.status == "en attente" %>
@@ -35,7 +35,7 @@
     </div>
 
     <div class="my-developers-container">
-      <h1>Mes developpeurs</h1>
+      <h1>Mes développeurs</h1>
       <% @user.developers.each do |dev| %>
       <div class="my-developers-card">
         <% if dev.image_url %>
@@ -57,9 +57,8 @@
       </div>
       <% end %>
     </div>
-  </div>
-
-  <div class="my-developers-container">
+    
+    <div class="my-developers-container">
     <h1>Notifications</h1>
       <% if @user.bookings.where(status: "en attente").empty? %>
         <p>Aucune Notifications en cours..</p>
@@ -82,4 +81,5 @@
           <% end %>
         <% end %>
       <% end %>
-  </div>
+    </div>
+ </div>
