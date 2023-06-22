@@ -5,7 +5,7 @@ class DevelopersController < ApplicationController
   def index
     @query = params[:query]
     if @query.present?
-      @developers = policy_scope(Developer).where("first_name LIKE :query OR last_name LIKE :query", query: "%#{@query}%")
+      @developers = policy_scope(Developer).where("first_name ILIKE :query OR last_name ILIKE :query OR description ILIKE :query OR city ILIKE :query", query: "%#{@query}%")
     else
       @developers = policy_scope(Developer)
     end

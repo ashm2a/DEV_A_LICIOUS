@@ -34,7 +34,7 @@
         <% if policy(@developer).edit? %>
         <%= link_to "Edit this developer", edit_developer_path(@developer) %>
         <% end %>
-        <%= link_to "Delete this developer", @developer, method: :delete if policy(@developer).destroy? %>
+        <%= link_to "Delete this developer", @developer, data: { turbo_method: :delete, turbo_confirm: "Es tu sûre ?" } if policy(@developer).destroy? %>
       </div>
     </div>
   </div>
