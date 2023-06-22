@@ -6,7 +6,7 @@
 
   <%# if booking date current
   show alert %>
-  <div class="container d-flex">
+  <div class="profile-container d-flex">
     <div class="my-bookings-container">
       <h1>Mes bookings</h1>
         <% @user.bookings.each do |booking| %>
@@ -32,6 +32,14 @@
         <% end %>
         <div class="my-developers-card-infos">
           <h2><%= dev.first_name %> <%= dev.last_name %></h2>
+        </div>
+        <div class="icons">
+          <%= link_to developer_path(dev.id), data: { turbo_method: :delete } do %>
+            <i class="fa-solid fa-trash"></i>
+          <% end %>
+          <%= link_to edit_developer_path(dev.id) do %>
+            <i class="fa-solid fa-pen-to-square"></i>
+          <% end %>
         </div>
       </div>
       <% end %>

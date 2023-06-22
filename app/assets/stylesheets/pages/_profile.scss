@@ -1,11 +1,16 @@
+.profile-container{
+  width: 90vw;
+  margin: 8px auto;
+}
+
 .my-bookings-container{
   width: 60%;
 
 }
 
 .my-developers-container{
-  width: 30%;
-
+  width: 25%;
+  margin-left: 8px;
 }
 
 
@@ -17,6 +22,7 @@
   display: flex;
   align-items: center;
   margin: 16px auto;
+  position: relative;
 
   img {
     height: 100%;
@@ -40,5 +46,27 @@
 
   .my-developers-card-infos {
     padding: 16px;
+  }
+
+  .icons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+
+    i {
+      font-size: 20px;
+
+      &:nth-child(1) {
+        color: $rouge;
+      }
+
+      &:nth-child(2) {
+        color: rgb(237, 208, 42);
+      }
+    }
   }
 }
