@@ -48,3 +48,7 @@
 <%#
 <h1>Mes bookings</h1>
 <% @user.bookings %>
+
+  <%= simple_form_for @booking do |f| %>
+      <%= f.submit "Ajoutez", class: 'btn custom-button' %>
+  <% end %>

@@ -25,10 +25,11 @@
 
       label {
         position: absolute;
-        top: 50%;
+        top: 0px;
         left: 0px;
-        transform: translateY(-50%);
+        transform: translateY(-100%);
         color: black;
+        font-weight: bold;
         font-size: 20px;
         transition: 0.4s ease-out;
       }
@@ -56,11 +57,8 @@
         min-height: 200px;
       }
 
-      &.animation,
       &:focus-within {
         label {
-          top: 0px;
-          transform: translateY(-100%);
           color: $rouge;
         }
 
