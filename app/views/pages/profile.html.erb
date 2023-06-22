@@ -1,6 +1,3 @@
-
-
-
   <h1>Mon profil</h1>
   <%= @user.first_name %>
 
@@ -8,21 +5,39 @@
   show alert %>
   <div class="profile-container d-flex">
     <div class="my-bookings-container">
-      <h1>Mes bookings</h1>
+      <h1>Mes réservations</h1>
         <% @user.bookings.each do |booking| %>
-        <div class="my-developers-card">
+          <div class="my-bookings-card">
+            <% if booking.developer.image_url %>
+              <%= image_tag(booking.developer.image_url, alt: "developer picture", class: "image-style") %>
+            <% else booking.developer.photo.attached? %>
+              <%= cl_image_tag(booking.developer..photo.key, alt: "developer picture", crop: :thumb, gravity: :face) %>
+            <% end %>
+            <div class="my-bookings-card-infos">
+              <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
+              <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
+              <p> <%= ((booking.date_end - booking.date_begin) * booking.developer.price_per_day).to_i  %> €</p>
+            </div>
 
-          <div class="my-developers-card-infos">
-            <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
-            <p>Du <%= booking.date_begin %> au <%= booking.date_end%></p>
+            <% if booking.status == "en attente" %>
+              <div class="my-bookings-status bg-warning">
+                <p><%= booking.status%></p>
+              </div>
+            <% elsif booking.status == "accepté" %>
+              <div class="my-bookings-status bg-success">
+                <p><%= booking.status%></p>
+              </div>
+            <% else %>
+              <div class="my-bookings-status bg-danger">
+                <p><%= booking.status%></p>
+              </div>
+            <% end %>
           </div>
-        </div>
         <% end %>
-
     </div>
 
     <div class="my-developers-container">
-      <h1>Mes annonces developpeurs</h1>
+      <h1>Mes developpeurs</h1>
       <% @user.developers.each do |dev| %>
       <div class="my-developers-card">
         <% if dev.image_url %>
