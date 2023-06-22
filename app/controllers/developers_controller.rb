@@ -13,6 +13,7 @@ class DevelopersController < ApplicationController
 
   def show
     authorize @developer
+    @booking = Booking.new
     @markers = [{
       lng: @developer.longitude,
       lat: @developer.latitude
