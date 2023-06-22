@@ -1,10 +1,7 @@
   <h1>Mon profil</h1>
   <%= @user.first_name %>
 
-  <%# if booking date current
-  show alert %>
-  <div class="profile-container d-flex">
-
+ <div class="profile-container d-flex">
     <div class="my-bookings-container">
       <h1>Mes réservations</h1>
         <% @user.bookings.each do |booking| %>
@@ -60,5 +57,29 @@
       </div>
       <% end %>
     </div>
-
-  </div>
+    
+    <div class="my-developers-container">
+    <h1>Notifications</h1>
+      <% if @user.bookings.where(status: "en attente").empty? %>
+        <p>Aucune Notifications en cours..</p>
+      <% else %>
+        <% @user.developers.each do |dev| %>
+          <% dev.bookings.each do |booking| %>
+            <% if booking.status == "en attente" %>
+              <div class="my-developers-card">
+                <div class="my-developers-card-infos">
+                  <h2><%= dev.first_name %> <%= dev.last_name %></h2>
+                  <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
+                  <p> <%= ((booking.date_end - booking.date_begin) * dev.price_per_day).to_i  %> €</p>
+                </div>
+                <div class="icons">
+                  <%= button_to 'Accepter', accept_booking_path(booking.id), method: :patch %>
+                  <%= button_to 'Refuser', refuse_booking_path(booking.id), method: :patch %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+ </div>
