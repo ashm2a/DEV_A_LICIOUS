@@ -11,7 +11,8 @@ export default class extends Controller {
     console.log(this.dateBeginTarget);
     flatpickr(this.dateBeginTarget, {
       altInput: true,
-      plugins: [new rangePlugin({ input: "#end_time"})]
+      plugins: [new rangePlugin({ input: "#end_time"})],
+      minDate: "today"
     })
   }
 }
