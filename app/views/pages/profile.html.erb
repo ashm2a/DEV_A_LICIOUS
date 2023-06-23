@@ -13,8 +13,7 @@
             <% end %>
             <div class="my-bookings-card-infos">
               <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
-              <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
-              <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
+             <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
             </div>
 
             <% if booking.status == "en attente" %>

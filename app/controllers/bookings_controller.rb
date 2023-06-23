@@ -7,6 +7,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    raise
     @booking = Booking.new(booking_params)
     @booking.developer = @developer
     @booking.user = current_user
@@ -49,6 +50,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:date_begin, :date_end)
+    params.require(:booking).permit(:date_begin, :date_end, :hidden_date_begin, :hidden_date_end)
   end
 end

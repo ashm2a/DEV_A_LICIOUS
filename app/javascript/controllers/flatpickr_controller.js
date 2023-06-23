@@ -10,6 +10,10 @@ export default class extends Controller {
   connect() {
     // console.log('hello from flatpickr controller');
     // console.log(this.dateBeginTarget);
+
+    const bookedDates = [""]
+    console.log(bookedDates);
+
     flatpickr(this.dateBeginTarget, {
       altInput: true,
       plugins: [new rangePlugin({ input: "#date_end"})],
