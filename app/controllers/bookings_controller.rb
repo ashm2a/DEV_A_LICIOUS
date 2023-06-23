@@ -7,7 +7,11 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
+    #@booking = Booking.new()
+    @booking = Booking.new(
+      date_begin: Date.parse(params[:booking][:date_begin].split(" au ").first),
+      date_end: Date.parse(params[:booking][:date_begin].split(" au ").last)
+    )
     @booking.developer = @developer
     @booking.user = current_user
     if @booking.save
@@ -17,6 +21,7 @@ class BookingsController < ApplicationController
     end
     authorize @booking
   end
+
 
   def accept
     @booking.status = "accepté"
