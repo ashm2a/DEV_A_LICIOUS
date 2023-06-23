@@ -18,8 +18,7 @@
       </div>
       <div class="booking-form">
         <%= simple_form_for [@developer, @booking], data: { controller: 'flatpickr' } do |f| %>
-          <%= f.input :date_begin, as: :string, label: "Date de début", input_html: { data: { flatpickr_target: "dateBegin" } }%>
-          <%= f.input :date_end, as: :string, label: "Date de fin", input_html: { data: { flatpickr_target: "dateEnd" } } %>
+          <%= f.input :date_begin, as: :string, label: "Dates de réservation", input_html: { data: { flatpickr_target: "dateBegin" } }%>
           <%= f.button :submit, "Reserver", class: "mt-3 btn custom-button" %>
         <% end %>
       </div>
