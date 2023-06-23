@@ -37,6 +37,9 @@
       <div class="bloc-deux">
         <div class="my-bookings-container">
           <h1 class="border-bottom">Mes récentes réservations</h1>
+          <% if current_user.developers.joins(:bookings).empty? %>
+            <p>Aucune réservation en cours...</p>
+          <% else %>
             <% @user.bookings.first(5).each do |booking| %>
               <div class="my-bookings-card border-bottom">
                 <div class="info-booking">
@@ -69,6 +72,7 @@
                 <% end %>
               </div>
             <% end %>
+          <% end %>
         </div>
       </div>
     </div>
