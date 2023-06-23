@@ -2,6 +2,7 @@ class Developer < ApplicationRecord
   belongs_to :user
   has_one_attached :photo
   has_many :bookings, dependent: :destroy
+  has_many :reviews, through: :bookings
   validates :first_name, :last_name, :description, :city, :price_per_day, presence: true
   validates :first_name, length: { minimum: 2 }
   validates :last_name, length: { minimum: 1 }
