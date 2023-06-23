@@ -8,13 +8,16 @@ export default class extends Controller {
   static targets = [ "dateBegin", "dateEnd" ]
 
   connect() {
-    console.log('hello from flatpickr controller');
-    console.log(this.dateBeginTarget);
+    // console.log('hello from flatpickr controller');
+    // console.log(this.dateBeginTarget);
     flatpickr(this.dateBeginTarget, {
       altInput: true,
-      plugins: [new rangePlugin({ input: "#end_time"})],
+      plugins: [new rangePlugin({ input: "#date_end"})],
       minDate: "today",
-      "locale": French
+      locale: French,
+      altFormat: "J F Y",
+    })
+    flatpickr(this.dateEndTarget, {
     })
   }
 }
