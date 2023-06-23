@@ -9,11 +9,13 @@ class DevelopersController < ApplicationController
     else
       @developers = policy_scope(Developer)
     end
+    
   end
 
   def show
     authorize @developer
     @booking = Booking.new
+    @review = Review.new
     @markers = [{
       lng: @developer.longitude,
       lat: @developer.latitude
