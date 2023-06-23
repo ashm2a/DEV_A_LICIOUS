@@ -5,7 +5,7 @@
 import { application } from "./application"
 
 import ProfileController from "./profile_controller"
-application.register("map", ProfileController)
+application.register("profile", ProfileController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)

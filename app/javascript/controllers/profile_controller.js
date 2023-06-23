@@ -1,14 +1,19 @@
-function addAnimationToLogin() {
-  const button = document.querySelector('#login');
-  const menuAppear = document.querySelector('.profile-menu');
+import { Controller } from "@hotwired/stimulus"
 
-  button.addEventListener('click', () => {
-    button.classList.toggle('fa-x');
-    menuAppear.classList.toggle('active');
-  });
+export default class extends Controller {
+  static targets = ["loginButton", "profileMenu"]
+
+  connect() {
+    console.log("Controller connected")
+    this.loginButtonTarget.addEventListener("click", this.toggleAnimation.bind(this))
+  }
+
+  toggleAnimation() {
+    console.log("Toggle animation")
+    console.log("loginButtonTarget:", this.loginButtonTarget)
+    console.log("profileMenuTarget:", this.profileMenuTarget)
+
+    this.loginButtonTarget.classList.toggle("fa-x")
+    this.profileMenuTarget.classList.toggle("active")
+  }
 }
-
-document.addEventListener('turbolinks:load', function () {
-  console.log('Page loaded with Turbolinks');
-  addAnimationToLogin(); // Exécutez le code sur chaque chargement de page via Turbolinks
-});

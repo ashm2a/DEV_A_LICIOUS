@@ -54,7 +54,6 @@ gem "simple_form", github: "heartcombo/simple_form"
 
 gem "devise"
 gem "pundit"
-gem 'turbolinks'
 
 gem 'nokogiri'
 gem 'open-uri'
