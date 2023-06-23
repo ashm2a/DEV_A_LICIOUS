@@ -16,8 +16,8 @@
       <div class="developer-rate mt-5">
         <%= @developer.price_per_day %>€ par jour
       </div>
-      <div class="booking-form">
-        <%= simple_form_for [@developer, @booking], data: { controller: 'flatpickr' } do |f| %>
+      <div class="booking-form" data-controller="flatpickr">
+        <%= simple_form_for [@developer, @booking] do |f| %>
           <%= f.hidden_field :date_begin, id: 'hidden_date_begin' %>
           <%= f.hidden_field :date_end, id: 'hidden_date_end' %>
 
