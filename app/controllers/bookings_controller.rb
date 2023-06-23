@@ -20,7 +20,6 @@ class BookingsController < ApplicationController
       render :new
     end
     authorize @booking
-
   end
 
 

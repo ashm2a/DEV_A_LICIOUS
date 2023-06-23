@@ -99,7 +99,6 @@
                     <p><strong><%= ((booking.date_end - booking.date_begin) * dev.price_per_day).to_i %> €</strong></p>
                   </div>
                 </div>
-
                 <% if booking.status == "en attente" %>
                   <div class="my-bookings-status bg-warning">
                     <p><%= booking.status%></p>
