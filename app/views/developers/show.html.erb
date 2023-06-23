@@ -15,7 +15,11 @@
       </div>
       <div class="developer-rate mt-5">
         <%= @developer.price_per_day %>€ par jour
-      </div>
+      </div>.
+
+
+
+      
       <div class="booking-form">
         <%= simple_form_for [@developer, @booking] do |f| %>
           <%= f.input :date_begin, as: :date, label: "Date de début" %>
