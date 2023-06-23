@@ -31,6 +31,7 @@
               <p><i class="fa-solid fa-location-pin"></i> <%= developer.city %> </p>
             </div>
           </div>
+          <span style="position: absolute; top: 10px; right: 15px; font-size: 20px; color: gold; text-shadow: 0 0 1px black;"><i style="font-size: 20px; color: gold;" class="fa-solid fa-star"></i> <%= developer.reviews.average(:rating).to_f.round %></span>
         </div>
      <% end %>
     <% end %>

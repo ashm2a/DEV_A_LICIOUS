@@ -10,7 +10,7 @@
     </div>
     <div class="booking">
       <div class="developer-name">
-          <%= @developer.first_name %> <%= @developer.last_name %>
+          <%= @developer.first_name %> <%= @developer.last_name %> &nbsp;&nbsp;&nbsp;<span style="color: gold;"><i style="font-size: 35px;" class="fa-solid fa-star"></i> <%= @developer.reviews.average(:rating).to_f.round %></span>
           <p>Cette annonce est proposée par <%= @developer.user.first_name %> <%= @developer.user.last_name %></p>
       </div>
       <div class="developer-rate mt-5">
@@ -36,13 +36,62 @@
   <div class="show-container-bottom mt-4 border-bottom border-top pt-3 pb-3">
       <div class="description">
         <h2>Description :</h2>
-        <p> <%= @developer.description %> </p>
+        <p style="font-size: 25px;"><%= @developer.description %></p>
       </div>
   </div>
 
-  <div class="show-container-informations mt-4 d-flex justify-content-between">
+  <div class="show-container-informations mt-4 d-flex justify-content-between gap-5">
     <div class="review-container mb-4">
-      <h2>Ils parlent de moi !</h2>
+      <h2>Qu'avez vous pensez de <%= @developer.first_name %> ?</h2>
+
+      <div class="form-review border-bottom mb-3 pb-3">
+        <% if current_user.present? %>
+          <% array = [] %>
+          <% current_user.bookings.each do |booking| %>
+            <% array << booking if booking.developer_id == @developer.id %>
+          <% end %>
+          <% unless array.empty? %>
+            <div class="form-container" id="review-form">
+              <%= simple_form_for [@developer, @review], html: { class: "formBloc" }, url: developer_reviews_path(@developer) do |f| %>
+                <div class="formGroupe">
+                  <%= f.label :content %>
+                  <%= f.text_field :content %>
+                </div>
+                <div class="formGroupe">
+                  <%= f.label :rating %>
+                  <%= f.input :rating, collection: [5, 4, 3, 2, 1, 0], selected: [5] %>
+                </div>
+                <%= f.submit "Ajoutez", class: 'btn custom-button' %>
+              <% end %>
+            </div>
+          <% else %>
+            <p><strong>Vous avez besoin d'une réservation pour laisser un avis.</strong></p>
+          <% end %>
+        <% else %>
+          <p><strong>Connectez-vous pour laisser un avis.</strong></p>
+        <% end %>
+      </div>
+
+      <div class="list-review">
+        <h2 class="mb-5">Ils ont donné leur avis ! (<%= @developer.reviews.length %>)</h2>
+        <% if @developer.reviews.empty? %>
+          <p><strong>Aucun avis pour le moment, postez le votre !</strong></p>
+        <% else %>
+          <% @developer.reviews.first(5).each do |review| %>
+            <div class="review-card">
+              <div class="name">
+                <%= review.booking.user.first_name %>
+              </div>
+              <div class="rating">
+                <%= review.rating %>/5
+              </div>
+              <div class="content">
+                <%= review.content %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
 
     <div class="map-container mb-4">

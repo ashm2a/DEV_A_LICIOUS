@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :developers do
     resources :bookings, only: [:new, :create]
+    resources :reviews, only: [:new, :create]
   end
   get 'profile/:id', to: 'pages#profile', as: 'user_profile'
   patch 'bookings/:id/accept', to: 'bookings#accept', as: 'accept_booking'
