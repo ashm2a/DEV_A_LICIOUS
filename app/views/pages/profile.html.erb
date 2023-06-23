@@ -11,7 +11,7 @@
         <div class="my-notifications-container">
           <h1 class="border-bottom">Notifications</h1>
           <% if current_user.developers.joins(:bookings).where(bookings: { status: "en attente" }).empty? %>
-            <p>Aucune notification en cours...</p>
+            <p>Aucune notification...</p>
           <% else %>
             <% current_user.developers.joins(:bookings).where(bookings: { status: "en attente" }).each do |dev| %>
               <% dev.bookings.where(status: "en attente").each do |booking| %>
@@ -53,10 +53,9 @@
                   <div class="my-bookings-card-infos">
                     <h2><%= booking.developer.first_name %> <%= booking.developer.last_name %></h2>
                     <p>Réservé.e du <%= booking.date_begin %> au <%= booking.date_end%></p>
-                    <p> <%= ((booking.date_end - booking.date_begin + 1) * booking.developer.price_per_day).to_i  %> €</p>
+                    <p><strong><%= ((booking.date_end - booking.date_begin) * booking.developer.price_per_day).to_i %> €</strong></p>
                   </div>
                 </div>
-
                 <% if booking.status == "en attente" %>
                   <div class="my-bookings-status bg-warning">
                     <p><%= booking.status%></p>
