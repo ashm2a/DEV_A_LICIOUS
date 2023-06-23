@@ -47,7 +47,7 @@
         <% if current_user.present? %>
           <% array = [] %>
           <% current_user.bookings.each do |booking| %>
-            <% array << booking if booking.developer_id == @developer.id %>
+            <% array << booking if booking.developer_id == @developer.id && booking.status == "accepté" %>
           <% end %>
           <% unless array.empty? %>
             <div class="form-container" id="review-form">
